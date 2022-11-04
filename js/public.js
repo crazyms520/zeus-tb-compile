@@ -1,4 +1,3 @@
- 
 $(function() {
 	const productInfo = {
 		1 : {'title': '大膽追夢的你', 'img1': 'img/pro01-01.png', 'info1': '「熱情、活力」是你的專屬代名詞，在社交場合最活躍的康樂股長就是你！', 'info2': '單純無心機，同時對生活充滿熱情與勇氣，只要遇到想做的事，一定會盡力完成！', 'img2': 'img/pro01-02.png', 'tip1': '茉莉', 'tip2': '晨曦茉莉淡香精', 'img3':'img/pro01-03.png', 'tip3': '恬淨月光淡香精'},
@@ -7,6 +6,8 @@ $(function() {
 		4 : {'title': '浪漫天真的你', 'img1': 'img/pro04-01.png', 'info1': '「自由、不做作」是你的專屬代名詞，你的自信灑脫總是可以不經意感染身邊朋友！', 'info2': '心軟、善良，看到朋友遇上困難，會犧牲自己去幫助別人，暖心的舉動也讓你成為好人緣代表！', 'img2': 'img/pro04-02.png', 'tip1': '玫瑰', 'tip2': '仙境玫瑰淡香精', 'img3':'img/pro04-03.png', 'tip3': '恬淨月光淡香精'},
 		5 : {'title': '神秘迷人的你', 'img1': 'img/pro05-01.png', 'info1': '「神秘、不做作」是你的專屬代名詞，你就像一陣摸不透的風，不做作的個性更讓你特別有魅力！', 'info2': '成熟穩重，在聚會中屬於持久慢熱型，但只要和你長期相處，便會深深被你的穩重魅力吸引！', 'img2': 'img/pro05-02.png', 'tip1': '麝香', 'tip2': '秘境天竺淡香精', 'img3':'img/pro05-03.png', 'tip3': '自由微醺淡香精'},
 	}
+
+	let products = [];
 	
 	function resultTemplet (product) {
 		let {title, img1, info1, info2, img2, tip1, tip2, img3, tip3} = product;
@@ -68,7 +69,7 @@ $(function() {
 		return arr.filter(function(currentValue, currentIndex){
 			return arr.indexOf(currentValue) !== currentIndex;
 		})
-	 }
+	}
 	
 	$('.tb_items').slick({
 		arrows: false,
@@ -77,18 +78,16 @@ $(function() {
 		touchMove: false,
 		infinite: false,
 		responsive: [{
-				breakpoint: 451,
-				settings: {
-					adaptiveHeight: true,
-				}
+			breakpoint: 451,
+			settings: {
+				adaptiveHeight: true,
+			}
 		}]
 	});
 	
 	$('#tb-1').click(function(){
 		$('.tb_items').slick('slickGoTo', 1);
 	})
-
-	let products = [];
 
 	$('#tb-q1').find('li').click(function() {
 		products.push($(this).attr('data-productId'));
@@ -122,11 +121,14 @@ $(function() {
 		
 	})
 
-	$('#get, #share').click(function(){
-		$('.tb_box').removeClass('longW');	
-		$('.tb_result_content').empty()
+	$('#get').click(function(){
+		$('.tb_box').removeClass('longW');
+    	$('.tb_result_content').empty()
 		$('.tb_items').slick('slickGoTo', 5);		
 	})
 
-
+	$('#restart').click(function(){
+		products = [];
+		$('.tb_items').slick('slickGoTo', 0);		
+	})
 });
