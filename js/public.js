@@ -146,6 +146,7 @@ $(function() {
 
 	$('#get').click(function(){
 		$('.tb_box').removeClass('longW');
+		$('.tb_result_content').removeClass('p_3');
     	$('.tb_result_content').empty()
 		$('.tb_items').slick('slickGoTo', 5);		
 	})
